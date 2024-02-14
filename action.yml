@@ -1,0 +1,20 @@
+name: Workflow Keepalive
+description: >-
+  GitHub Action to prevent GitHub from disabling scheduled workflows due to
+  repository inactivity
+inputs:
+  GITHUB_TOKEN:
+    required: true
+    description: "secrets.GITHUB_TOKEN with actions: write permissions"
+runs:
+  using: composite
+  steps:
+    - name: Re-enable workflow
+      env:
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+      shell: bash
+      run: |
+        [[ "${GITHUB_WORKFLOW_REF:?}" == "${GITHUB_REPOSITORY:?}"/.github/workflows/*.y?(a)ml@* ]]
+        workflow="${GITHUB_WORKFLOW_REF%%@*}"
+        workflow="${workflow#${GITHUB_REPOSITORY}/.github/workflows/}"
+        gh api -X PUT "repos/${GITHUB_REPOSITORY}/actions/workflows/${workflow}/enable"
