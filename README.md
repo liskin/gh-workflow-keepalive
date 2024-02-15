@@ -5,6 +5,12 @@ repository inactivity][1].
 
 [1]: https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration#disabling-and-enabling-workflows
 
+Compared to other similar GitHub Actions
+(<https://github.com/marketplace/actions/keep-your-github-actions-alive-automatically>,
+<https://github.com/marketplace/actions/keepalive-workflow>), this one will
+not create any dummy commits. Instead, it uses GitHub API to preemptively
+re-enable the workflow, thus preventing it from being automatically disabled.
+
 ## Usage:
 
 Invoke this action in all scheduled workflows that you need to continue
