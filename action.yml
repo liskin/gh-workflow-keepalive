@@ -2,6 +2,9 @@ name: Workflow Keepalive
 description: >-
   GitHub Action to prevent GitHub from disabling scheduled workflows due to
   repository inactivity
+branding:
+  icon: activity
+  color: red
 inputs:
   GITHUB_TOKEN:
     required: true
