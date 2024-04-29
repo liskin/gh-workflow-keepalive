@@ -15,6 +15,7 @@ runs:
     - name: Re-enable workflow
       env:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+      shell: sh
       run: |
         expr "${GITHUB_WORKFLOW_REF:?}" : "${GITHUB_REPOSITORY:?}\/\.github\/workflows\/.*\.ya\?ml\@.*" > /dev/null
         workflow="${GITHUB_WORKFLOW_REF%%@*}"
