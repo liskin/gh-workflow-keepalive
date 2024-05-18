@@ -7,14 +7,16 @@ branding:
   color: red
 inputs:
   GITHUB_TOKEN:
-    required: true
-    description: "secrets.GITHUB_TOKEN with actions: write permissions"
+    required: false
+    description: >-
+      GITHUB_TOKEN with actions: write permissions
+      (default: github.token)
 runs:
   using: composite
   steps:
     - name: Re-enable workflow
       env:
-        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token || inputs.GITHUB_TOKEN }}
       shell: sh
       run: |
         case "${GITHUB_WORKFLOW_REF:?}" in
