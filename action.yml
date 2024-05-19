@@ -16,7 +16,7 @@ runs:
   steps:
     - name: Re-enable workflow
       env:
-        GITHUB_TOKEN: ${{ github.token || inputs.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN || github.token }}
       shell: sh
       run: |
         case "${GITHUB_WORKFLOW_REF:?}" in
