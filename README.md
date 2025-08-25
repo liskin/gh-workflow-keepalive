@@ -7,7 +7,7 @@ repository inactivity][1].
 
 Compared to other similar GitHub Actions
 (<https://github.com/marketplace/actions/keep-your-github-actions-alive-automatically>,
-<https://github.com/marketplace/actions/keepalive-workflow>), this one will
+~<https://github.com/marketplace/actions/keepalive-workflow> v1~), this one will
 not create any dummy commits. Instead, it uses GitHub API to preemptively
 re-enable the workflow, thus preventing it from being automatically disabled.
 
